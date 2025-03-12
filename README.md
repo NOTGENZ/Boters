@@ -213,10 +213,5 @@ window.location.href = "index.html"; // Change this to your main website page
 </script>
 
 </body>
-</html> ```
+</html>
 
-📢 **Need help or have suggestions? Open an issue on GitHub!**  
-
----
-
-🚀 **Enjoy a bot-free, secure website with Boters!** 🔥
