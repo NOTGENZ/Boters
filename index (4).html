@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Boter | Smart Shield</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #121212; color: white; }
+        .captcha-container { text-align: center; background: #1E1E1E; padding: 25px; border-radius: 10px; box-shadow: 0px 5px 15px rgba(255,255,255,0.2); width: 400px; }
+        .captcha-box { margin: 15px 0; padding: 10px; background: #333; display: inline-block; border-radius: 5px; font-size: 22px; font-weight: bold; letter-spacing: 3px; color: #00FF99; }
+        .input-field { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #555; background: #222; color: white; border-radius: 5px; text-align: center; font-size: 18px; }
+        .verify-btn { margin-top: 15px; padding: 12px 20px; border: none; background: #00FF99; color: black; cursor: pointer; border-radius: 5px; width: 100%; font-size: 16px; font-weight: bold; }
+        .verify-btn:disabled { background: gray; cursor: not-allowed; }
+        .loading { display: none; font-size: 18px; margin-top: 15px; color: #00FF99; }
+        .fade { animation: fadeOut 1s forwards; }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+        .terms { margin-top: 10px; font-size: 12px; color: #888; }
+        .checkbox-container { display: flex; align-items: center; justify-content: center; margin-top: 10px; }
+        .checkbox-container input { margin-right: 10px; }
+        #tick { font-size: 22px; display: none; }
+        .loader { display: none; width: 50px; height: 50px; border: 5px solid #fff; border-top: 5px solid #00FF99; border-radius: 50%; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<div class="captcha-container">
+    <h2>🔒 Checking Your Browser...</h2>
+    <p>Complete the verification below</p>
+    <div class="captcha-box" id="captcha-text"></div>
+    <input type="text" id="captcha-input" class="input-field" placeholder="Enter Captcha">
+    
+    <div class="checkbox-container">
+        <input type="checkbox" id="captcha-check" disabled> <label for="captcha-check">I am not a bot</label>
+        <span id="tick">✔</span>
+    </div>
+
+    <div class="loader" id="loader"></div>
+
+    <button class="verify-btn" id="verify-btn" disabled>Verify</button>
+    <div class="loading" id="loading">✔ Verification Successful... Redirecting</div>
+    <div class="terms">By continuing, you agree to our <a href="#">Terms & Conditions</a>.</div>
+</div>
+
+<script>
+    function generateCaptcha() {
+        let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        let captcha = "";
+        for (let i = 0; i < 6; i++) {
+            let randomChar = chars.charAt(Math.floor(Math.random() * chars.length));
+            captcha += Math.random() > 0.5 ? randomChar.toUpperCase() : randomChar.toLowerCase();
+        }
+        document.getElementById("captcha-text").textContent = captcha;
+        return captcha;
+    }
+
+    let generatedCaptcha = generateCaptcha();
+    let captchaInput = document.getElementById('captcha-input');
+    let captchaCheck = document.getElementById('captcha-check');
+    let verifyBtn = document.getElementById('verify-btn');
+    let tick = document.getElementById('tick');
+    let loader = document.getElementById('loader');
+    let container = document.querySelector('.captcha-container');
+
+    let mouseMoved = false;
+    document.body.addEventListener("mousemove", function() {
+        mouseMoved = true;
+    });
+
+    captchaInput.addEventListener('input', function() {
+        if (this.value === generatedCaptcha) {
+            captchaCheck.disabled = false;
+        } else {
+            captchaCheck.disabled = true;
+            verifyBtn.disabled = true;
+        }
+    });
+
+    captchaCheck.addEventListener('change', function() {
+        if (this.checked) {
+            tick.style.display = 'inline';
+            verifyBtn.disabled = false;
+        } else {
+            tick.style.display = 'none';
+            verifyBtn.disabled = true;
+        }
+    });
+
+    verifyBtn.addEventListener('click', function() {
+        if (!mouseMoved) {
+            alert("Bot detected! Verification failed.");
+            sendEmailAlert();
+            return;
+        }
+        loader.style.display = 'block';
+        setTimeout(() => {
+            container.classList.add('fade'); 
+            window.location.href = "#"; 
+        }, 3000);
+    });
+
+    function sendEmailAlert() {
+        let developerEmail = "dev@example.com";
+        let emailBody = encodeURIComponent("🚨 Bot attack detected on your site! Take action immediately.");
+        window.location.href = `mailto:${developerEmail}?subject=Bot Alert&body=${emailBody}`;
+    }
+</script>
+
+</body>
+</html>
