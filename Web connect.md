@@ -4,6 +4,9 @@
 
 
  To connect Boters in a **web environment** other than GitHub Pages, follow these steps:
+ --- 
+ 
+ **It's an example you can create your own** `index.html` **file.**
 
 1. **Create the `index.html` file**:
    ```html
