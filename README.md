@@ -1,6 +1,12 @@
 ### **🚀 Boters - Cloudflare-Style CAPTCHA Shield for GitHub Pages**  
 
-**Boters** is an advanced security shield that prevents bots from accessing your GitHub Pages site. It works like **Cloudflare's "Checking Your Browser"** page, ensuring only real users can enter while blocking automated bots.  
+**Boters** is an advanced security shield that prevents bots from accessing your GitHub Pages site. It works like **Cloudflare's "Checking Your Browser"** page, ensuring only real users can enter while blocking automated bots.
+![shield_11918095](https://github.com/user-attachments/assets/b1c017fa-2ef9-443a-91dd-02fe279eb701)
+
+
+---
+_Icons credits_ : 
+<a href="https://www.freepik.com/icon/shield_11918095#fromView=search&page=1&position=85&uuid=a6f9fa4c-643d-40be-b03c-28f9d122e5c2">Icon by Creative Squad</a>
 
 ---
 
@@ -11,7 +17,9 @@
 ✅ **Checkbox & Delay Verification** – Ensures human interaction before proceeding.  
 ✅ **Loading Animation & Smooth Redirect** – A Cloudflare-style security experience.  
 ✅ **Email Alert for Bots** – If a bot is detected, an email alert is sent to the developer.  
-✅ **100% Free & Open-Source** – Works directly on GitHub Pages without paid services.  
+✅ **100% Free & Open-Source** – Works directly on GitHub Pages without paid services. 
+![botersgithub](https://github.com/user-attachments/assets/da0e66bb-3850-436a-b6a6-5fa557047384)
+
 
 ---
 
