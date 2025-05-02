@@ -153,7 +153,7 @@ window.location.href = "index.html"; // Change this to your main website page
 
     <button class="verify-btn" id="verify-btn" disabled>Verify</button>
     <div class="loading" id="loading">✔ Verification Successful... Redirecting</div>
-    <div class="terms">By continuing, you agree to our <a href="#">Terms & Conditions</a>.</div>
+    <div class="terms">By continuing, you agree to our <a href="https://github.com/NOTGENZ/Boters/blob/main/Terms%20and%20conditions.md">Terms & Conditions</a>.</div>
 </div>
 
 <script>
